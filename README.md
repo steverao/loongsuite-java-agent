@@ -1,9 +1,52 @@
-# OpenTelemetry Instrumentation for Java
+# LoomSuite Java Agent
 
+## About This Project
+
+This project is based on [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) and extends it with additional functionality including:
+
+- **Alibaba Extensions**: Custom instrumentations and extensions designed for Alibaba's ecosystem and cloud services
+- **AI-related Instrumentation**: Enhanced support for AI/ML frameworks and services, including Generative AI semantic conventions
+- **Custom Distribution Examples**: A comprehensive set of extension examples in the `examples/distro` directory
+
+For the original OpenTelemetry project badges and community links:
 [![Release](https://img.shields.io/github/v/release/open-telemetry/opentelemetry-java-instrumentation?include_prereleases&style=)](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/open-telemetry/opentelemetry-java-instrumentation/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/opentelemetry-java-instrumentation)
 [![Slack](https://img.shields.io/badge/slack-@cncf/otel--java-blue.svg?logo=slack)](https://cloud-native.slack.com/archives/C014L2KCTE3)
 
+## LoomSuite Extensions
+
+This project includes several extension points and examples that demonstrate how to extend OpenTelemetry Java instrumentation:
+
+### Available Extensions in examples/distro
+
+The `examples/distro` directory contains a comprehensive collection of extension examples:
+
+- **[DemoIdGenerator](examples/distro/custom/src/main/java/com/example/javaagent/DemoIdGenerator.java)** - Custom `IdGenerator` implementation
+- **[DemoPropagator](examples/distro/custom/src/main/java/com/example/javaagent/DemoPropagator.java)** - Custom `TextMapPropagator` for trace context propagation
+- **[DemoSampler](examples/distro/custom/src/main/java/com/example/javaagent/DemoSampler.java)** - Custom `Sampler` for trace sampling decisions
+- **[DemoSpanProcessor](examples/distro/custom/src/main/java/com/example/javaagent/DemoSpanProcessor.java)** - Custom `SpanProcessor` for span lifecycle management
+- **[DemoSpanExporter](examples/distro/custom/src/main/java/com/example/javaagent/DemoSpanExporter.java)** - Custom `SpanExporter` for telemetry data export
+- **[DemoResourceProvider](examples/distro/custom/src/main/java/com/example/javaagent/DemoResourceProvider.java)** - Custom resource attribute provider
+- **[DemoAutoConfigurationCustomizerProvider](examples/distro/custom/src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java)** - SDK auto-configuration customization
+
+### AI and Generative AI Support
+
+This project includes enhanced support for AI/ML frameworks:
+
+- **Generative AI Semantic Conventions**: Located in `instrumentation-api-incubator/src/main/java/io/opentelemetry/instrumentation/api/incubator/semconv/genai/`
+- **GenAI Metrics and Spans**: Specialized extractors and processors for AI workloads
+- **Custom AI Instrumentations**: Future extensions for popular AI frameworks and services
+
+### Alibaba Cloud Extensions
+
+Planned extensions for Alibaba Cloud ecosystem integration (coming soon):
+
+- Custom instrumentations for Alibaba Cloud services
+- Enhanced support for Alibaba middleware and frameworks
+- Specialized exporters for Alibaba observability platforms
+
+* [About This Project](#about-this-project)
+* [LoomSuite Extensions](#loomsuite-extensions)
 * [About](#about)
 * [Getting Started](#getting-started)
 * [Configuring the Agent](#configuring-the-agent)
@@ -16,19 +59,17 @@
 
 ## About
 
-This project provides a Java agent JAR that can be attached to any Java 8+
-application and dynamically injects bytecode to capture telemetry from a
-number of popular libraries and frameworks.
-You can export the telemetry data in a variety of formats.
-You can also configure the agent and exporter via command line arguments
-or environment variables. The net result is the ability to gather telemetry
-data from a Java application without code changes.
+This project is built on top of the OpenTelemetry Java instrumentation agent and provides all the same core functionality. The agent JAR can be attached to any Java 8+ application and dynamically injects bytecode to capture telemetry from a number of popular libraries and frameworks. You can export the telemetry data in a variety of formats and configure the agent and exporter via command line arguments or environment variables.
 
-This repository also publishes standalone instrumentation for several libraries (and growing)
-that can be used if you prefer that over using the Java agent.
-Please see the standalone library instrumentation column
-on [Supported Libraries](docs/supported-libraries.md#libraries--frameworks).
-If you are looking for documentation on using those.
+**Key Features:**
+
+- **Full OpenTelemetry Compatibility**: All original OpenTelemetry Java instrumentation features are preserved
+- **Extended Functionality**: Additional instrumentations and extensions for specialized use cases
+- **Alibaba Ecosystem Support**: Enhanced support for Alibaba Cloud services and middleware
+- **AI/ML Framework Support**: Specialized instrumentation for AI and machine learning workloads
+- **Custom Distribution Examples**: Comprehensive examples for creating your own agent distributions
+
+This project also publishes standalone instrumentation for several libraries (and growing) that can be used if you prefer that over using the Java agent. Please see the standalone library instrumentation column on [Supported Libraries](docs/supported-libraries.md#libraries--frameworks) for documentation on using those.
 
 ## Getting Started
 
@@ -158,7 +199,7 @@ For more information about the approver role, see the [community repository](htt
 
 For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
 
-### Thanks to all of our contributors!
+### Thanks to all of our contributors
 
 <a href="https://github.com/open-telemetry/opentelemetry-java-instrumentation/graphs/contributors">
   <img alt="Repo contributors" src="https://contrib.rocks/image?repo=open-telemetry/opentelemetry-java-instrumentation" />
